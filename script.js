@@ -19,3 +19,7 @@ function urlParser(beforeParse) {
 }
 
 let promiseAsker = fetch(url);
+
+promiseAsker.then((response) => {
+    return promiseAsker.text();
+})
