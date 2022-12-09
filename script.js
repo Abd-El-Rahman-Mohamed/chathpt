@@ -7,6 +7,7 @@ const askBTN = document.querySelector('#submitQ');
 
 let ask = "";
 let url =  "";
+let ans = "";
 
 askBTN.addEventListener('click', ()=>{
     ask = theQ.value;
@@ -23,3 +24,4 @@ let promiseAsker = fetch(url);
 promiseAsker.then((response) => {
     return response.json();
 })
+.then( ans += json[html]);
