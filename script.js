@@ -19,10 +19,10 @@ askBTN.addEventListener('click', () => {
     try {
         request.open('GET', url);
 
-        request.responseType = 'json';
+        request.responseType = 'text';
 
         request.addEventListener('load', () => alert("The requset is fully loaded"));
-        request.addEventListener('load', () => console.log(request.response));
+        request.addEventListener('load', () => ans = request.response);
         request.addEventListener('error', () => console.error('XHR error'));
 
         request.send();
