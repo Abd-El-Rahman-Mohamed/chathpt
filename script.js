@@ -20,9 +20,13 @@ function urlParser(beforeParse) {
 }
 
 let promiseAsker = fetch(url);
-
-promiseAsker.then((response) => {
-    let json = response.json();
-    return json;
+promiseAsker.then(result => result.json())
+.then(result => {
+    console.log(result);
 })
-.then(json => ans += json[html]);
+
+// promiseAsker.then((response) => {
+//     let json = response.json();
+//     return json;
+// })
+// .then(json => ans += json[html]);
