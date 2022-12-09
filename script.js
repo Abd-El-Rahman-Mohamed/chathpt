@@ -6,34 +6,35 @@ const askBTN = document.querySelector('#submitQ');
 // });
 
 let ask = "";
-let url =  "";
+let url = "";
 let ans = "";
 
-askBTN.addEventListener('click', ()=>{
+askBTN.addEventListener('click', () => {
     ask = theQ.value;
-    url =  "https://api.pawan.krd/chat/gpt?text=" + urlParser(ask) + "&lang=en";
+    url = "https://api.pawan.krd/chat/gpt?text=" + urlParser(ask) + "&lang=en";
+
+    // Sending a request when the btn is clicked
+    const request = new XMLHttpRequest();
+
+    try {
+        request.open('GET', url);
+
+        request.responseType = 'json';
+
+        request.addEventListener('load', () => alert("The requset is fully loaded"));
+        request.addEventListener('load', () => console.log(request.response));
+        request.addEventListener('error', () => console.error('XHR error'));
+
+        request.send();
+
+    } catch (error) {
+        console.error(`XHR error ${request.status}`);
+    }
 });
 
 // To make the question able to be sent
 function urlParser(beforeParse) {
     return "" + beforeParse.replaceAll(" ", "%20");
-}
-
-const request = new XMLHttpRequest();
-
-try {
-  request.open('GET', url);
-
-  request.responseType = 'json';
-
-  request.addEventListener('load', () => alert("The requset is fully loaded"));
-  request.addEventListener('load', () => console.log(request.response));
-  request.addEventListener('error', () => console.error('XHR error'));
-
-  request.send();
-
-} catch (error) {
-  console.error(`XHR error ${request.status}`);
 }
 
 // let promiseAsker = fetch(url);
