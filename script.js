@@ -19,11 +19,28 @@ function urlParser(beforeParse) {
     return "" + beforeParse.replaceAll(" ", "%20");
 }
 
-let promiseAsker = fetch(url);
-promiseAsker.then(result => result.json())
-.then(result => {
-    console.log(result);
-})
+const request = new XMLHttpRequest();
+
+try {
+  request.open('GET', url);
+
+  request.responseType = 'json';
+
+  request.addEventListener('load', () => alert("The requset is fully loaded"));
+  request.addEventListener('load', () => console.log(request.response));
+  request.addEventListener('error', () => console.error('XHR error'));
+
+  request.send();
+
+} catch (error) {
+  console.error(`XHR error ${request.status}`);
+}
+
+// let promiseAsker = fetch(url);
+// promiseAsker.then(result => result.json())
+// .then(result => {
+//     console.log(result);
+// })
 
 // promiseAsker.then((response) => {
 //     let json = response.json();
